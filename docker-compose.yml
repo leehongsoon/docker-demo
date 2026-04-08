@@ -3,7 +3,6 @@ services:
     build: .
     ports:
       - "80:80"
-    volumes:
-      - .:/app
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
+    restart: unless-stopped
