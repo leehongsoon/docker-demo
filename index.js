@@ -53,7 +53,7 @@ app.get('/api/books', (_req, res) => {
 
 app.post('/api/books', (req, res) => {
   const { title, author, genre, year, totalCopies, description } = req.body;
-  if (!title || !author) return res.status(400).json({ error: 'Title and author are required' });
+  if (!title || !title.trim() || !author || !author.trim()) return res.status(400).json({ error: 'Title and author are required' });
   const book = {
     id: nextBookId++,
     title: title.trim(),
