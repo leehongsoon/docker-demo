@@ -1,4 +1,5 @@
 let todos = JSON.parse(localStorage.getItem('todos') || '[]');
+let _nextId = todos.length ? Math.max(...todos.map(t => t.id)) + 1 : 1;
 let filter = 'all';
 
 const input = document.getElementById('todo-input');
@@ -42,7 +43,7 @@ function escapeHtml(str) {
 function addTodo() {
     const text = input.value.trim();
     if (!text) return;
-    todos.push({ id: Date.now(), text, done: false });
+    todos.push({ id: _nextId++, text, done: false });
     input.value = '';
     saveTodos();
     render();
