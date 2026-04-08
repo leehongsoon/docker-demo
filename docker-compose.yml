@@ -1,9 +1,17 @@
 services:
   web:
     build: .
+    container_name: docker-demo-web
     ports:
-      - "80:80"
+      - "3000:3000"
     volumes:
       - .:/app
+      - /app/node_modules
     environment:
       - NODE_ENV=development
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 5s
+      start_period: 5s
+      retries: 3
