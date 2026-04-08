@@ -3,14 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning How to Use GitHub</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Learning How To Use GitHub</h1>
-    <h2>Learner's name</h2>
-    <h3>Student's name</h3>
-    <h4> Tutor's name</h4>
-    <p>Sophia</p>
+    <div class="container">
+        <h1>Todo List</h1>
+
+        <div class="input-area">
+            <input type="text" id="todo-input" placeholder="Add a new task..." maxlength="200" />
+            <button id="add-btn">Add</button>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="active">Active</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+
+        <ul id="todo-list"></ul>
+
+        <div class="footer">
+            <span id="items-left">0 items left</span>
+            <button id="clear-completed">Clear Completed</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
