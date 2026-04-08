@@ -1,9 +1,7 @@
 services:
-  web:
+  todo-app:
     build: .
+    container_name: todo-app
     ports:
-      - "80:80"
-    volumes:
-      - .:/app
-    environment:
-      - NODE_ENV=development
+      - "3000:80"
+    restart: unless-stopped

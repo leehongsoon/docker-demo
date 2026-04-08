@@ -1,13 +1,19 @@
-FROM node:16
+# ── Build stage ────────────────────────────────────────────────────────────────
+FROM node:20-alpine AS base
 
 WORKDIR /app
 
+# Install dependencies first (layer cache)
 COPY package*.json ./
+RUN npm ci --omit=dev
 
-RUN npm install
+# Copy app source
+COPY index.js ./
+COPY index.html ./
+COPY style.css ./
+COPY app.js ./
 
-COPY . .
-
+# ── Runtime ────────────────────────────────────────────────────────────────────
 EXPOSE 80
 
-CMD [ "npm", "start" ]
+CMD ["node", "index.js"]
